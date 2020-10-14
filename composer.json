@@ -1,0 +1,59 @@
+{
+    "name": "eolica/laravel-hubspot",
+    "description": "Laravel wrapper for the Hubspot PHP client package",
+    "keywords": [
+        "eolica",
+        "laravel-hubspot",
+        "laravel",
+        "hubspot",
+        "hubspot php",
+        "hubspot api",
+        "hubspot laravel"
+    ],
+    "homepage": "https://github.com/Eolica-Web/laravel-hubspot",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "David Llobell",
+            "email": "dllobellmoya@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "graham-campbell/manager": "^4.6",
+        "hubspot/hubspot-php": "^3.0",
+        "illuminate/contracts": "^6.0 || ^7.0 || ^8.0",
+        "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Eolica\\LaravelHubspot\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Eolica\\LaravelHubspot\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Eolica\\LaravelHubspot\\HubspotServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
