@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 final class HubspotServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -17,17 +17,17 @@ final class HubspotServiceProvider extends ServiceProvider implements Deferrable
         }
     }
 
-    public function register()
+    public function register(): void
     {
         $this->registerHubspotManager();
     }
 
-    public function provides()
+    public function provides(): array
     {
         return ['hubspot'];
     }
 
-    private function registerHubspotManager()
+    private function registerHubspotManager(): void
     {
         $this->app->singleton('hubspot', function (Container $app) {
             return new HubspotManager($app['config'], new HubspotFactory());

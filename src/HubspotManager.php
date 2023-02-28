@@ -4,6 +4,7 @@ namespace Eolica\LaravelHubspot;
 
 use GrahamCampbell\Manager\AbstractManager;
 use Illuminate\Contracts\Config\Repository;
+use SevenShores\Hubspot\Factory;
 
 /**
  * @method \SevenShores\Hubspot\Resources\Analytics          analytics()
@@ -48,21 +49,17 @@ use Illuminate\Contracts\Config\Repository;
  */
 final class HubspotManager extends AbstractManager
 {
-    private $factory;
-
-    public function __construct(Repository $config, HubspotFactory $factory)
+    public function __construct(Repository $config, private HubspotFactory $factory)
     {
         parent::__construct($config);
-
-        $this->factory = $factory;
     }
 
-    protected function createConnection(array $config)
+    protected function createConnection(array $config): Factory
     {
         return $this->factory->__invoke($config);
     }
 
-    protected function getConfigName()
+    protected function getConfigName(): string
     {
         return 'hubspot';
     }

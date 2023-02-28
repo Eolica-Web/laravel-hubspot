@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Facade;
  */
 final class Hubspot extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'hubspot';
     }

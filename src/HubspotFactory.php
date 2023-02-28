@@ -13,12 +13,12 @@ use SevenShores\Hubspot\RetryMiddlewareFactory;
 
 final class HubspotFactory
 {
-    public function __invoke(array $config)
+    public function __invoke(array $config): Factory
     {
         return new Factory([], $this->getClient($config));
     }
 
-    private function getClient(array $config)
+    private function getClient(array $config): Client
     {
         return new Client(
             $config['config'],
@@ -28,7 +28,7 @@ final class HubspotFactory
         );
     }
 
-    private function buildHandlerStack(array $config)
+    private function buildHandlerStack(array $config): HandlerStack
     {
         $handlerStack = HandlerStack::create();
 
@@ -51,7 +51,7 @@ final class HubspotFactory
         return $handlerStack;
     }
 
-    private function getDelayFunction(string $config)
+    private function getDelayFunction(string $config): callable
     {
         [$method, $value] = explode(':', $config);
 
